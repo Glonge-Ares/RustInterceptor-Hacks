@@ -1,13 +1,20 @@
 using System.Collections.Generic;
 
 namespace Rust_Interceptor {
-    class StringPool {
+    public class StringPool {
 
         public static Dictionary<uint, string> idToString = new Dictionary<uint, string>();
+        public static Dictionary<int, string> itemIDToString = new Dictionary<int, string>();
 
         public static string Get(uint id) {
             string name = "";
             idToString.TryGetValue(id, out name);
+            return name;
+        }
+
+        public static string GetItem(int id) {
+            string name = "POOP";
+            itemIDToString.TryGetValue(id, out name);
             return name;
         }
 
@@ -75,12 +82,15 @@ namespace Rust_Interceptor {
             idToString.Add(96867, "art");
             idToString.Add(1056242533, "assets/benchmarks/benchmarks.asset");
             idToString.Add(2484282209, "assets/bundled/debugskin.guiskin");
-            idToString.Add(2995056938, "assets/bundled/prefabs/autospawn/animals/bear.prefab");
-            idToString.Add(1029921888, "assets/bundled/prefabs/autospawn/animals/boar.prefab");
-            idToString.Add(2579547185, "assets/bundled/prefabs/autospawn/animals/chicken.prefab");
-            idToString.Add(363429385, "assets/bundled/prefabs/autospawn/animals/horse.prefab");
-            idToString.Add(1867875127, "assets/bundled/prefabs/autospawn/animals/stag.prefab");
-            idToString.Add(4102598860, "assets/bundled/prefabs/autospawn/animals/wolf.prefab");
+
+            //ANIMALS
+            idToString.Add(2995056938, "assets/bundled/prefabs/autospawn/animals/bear.prefab"); //BEAR
+            idToString.Add(1029921888, "assets/bundled/prefabs/autospawn/animals/boar.prefab"); //BOAR
+            idToString.Add(2579547185, "assets/bundled/prefabs/autospawn/animals/chicken.prefab"); //CHICKEN
+            idToString.Add(1867875127, "assets/bundled/prefabs/autospawn/animals/stag.prefab"); //STAG
+            idToString.Add(4102598860, "assets/bundled/prefabs/autospawn/animals/wolf.prefab"); //WOLF
+            idToString.Add(363429385, "assets/bundled/prefabs/autospawn/animals/horse.prefab"); //HORSE
+
             idToString.Add(3490814317, "assets/bundled/prefabs/autospawn/canyon/canyon_1.prefab");
             idToString.Add(938657356, "assets/bundled/prefabs/autospawn/canyon/canyon_2.prefab");
             idToString.Add(2681467691, "assets/bundled/prefabs/autospawn/canyon/canyon_3.prefab");
@@ -157,6 +167,8 @@ namespace Rust_Interceptor {
             idToString.Add(2318133850, "assets/bundled/prefabs/autospawn/clutter/v2_tundra_fields_groundflora/flowers-white.prefab");
             idToString.Add(551715245, "assets/bundled/prefabs/autospawn/clutter/v2_tundra_fields_tallgrass/tallgrass.prefab");
             idToString.Add(1154099404, "assets/bundled/prefabs/autospawn/clutter/v2_tundra_fields_weeds/snakeweed.prefab");
+
+            //COLLECTABLE
             idToString.Add(2337337587, "assets/bundled/prefabs/autospawn/collectable/corn/corn-collectable.prefab");
             idToString.Add(3278044659, "assets/bundled/prefabs/autospawn/collectable/hemp/hemp-collectable.prefab");
             idToString.Add(3703356906, "assets/bundled/prefabs/autospawn/collectable/mushrooms/mushroom-cluster-5.prefab");
@@ -166,6 +178,7 @@ namespace Rust_Interceptor {
             idToString.Add(1349997351, "assets/bundled/prefabs/autospawn/collectable/stone/stone-collectable.prefab");
             idToString.Add(3334224657, "assets/bundled/prefabs/autospawn/collectable/stone/sulfur-collectable.prefab");
             idToString.Add(2734840477, "assets/bundled/prefabs/autospawn/collectable/stone/wood-collectable.prefab");
+
             idToString.Add(2787415337, "assets/bundled/prefabs/autospawn/decor/bridge/bridge.prefab");
             idToString.Add(3928648131, "assets/bundled/prefabs/autospawn/decor/busstop/busstop.prefab");
             idToString.Add(2786592117, "assets/bundled/prefabs/autospawn/decor/hapis-rocks-medium/rock_med_a.prefab");
@@ -318,15 +331,20 @@ namespace Rust_Interceptor {
             idToString.Add(2986728969, "assets/bundled/prefabs/autospawn/resource/crystals/crystal2.prefab");
             idToString.Add(40163481, "assets/bundled/prefabs/autospawn/resource/crystals/crystal2b.prefab");
             idToString.Add(1782973816, "assets/bundled/prefabs/autospawn/resource/crystals/crystal2c.prefab");
+
+            //LOOT
             idToString.Add(651787397, "assets/bundled/prefabs/autospawn/resource/loot/loot-barrel-1.prefab");
             idToString.Add(2394597732, "assets/bundled/prefabs/autospawn/resource/loot/loot-barrel-2.prefab");
             idToString.Add(2690357381, "assets/bundled/prefabs/autospawn/resource/loot/trash-pile-1.prefab");
-            idToString.Add(736323343, "assets/bundled/prefabs/autospawn/resource/ores/metal-ore.prefab");
-            idToString.Add(916501233, "assets/bundled/prefabs/autospawn/resource/ores/stone-ore.prefab");
-            idToString.Add(1351790091, "assets/bundled/prefabs/autospawn/resource/ores/sulfur-ore.prefab");
-            idToString.Add(2680863385, "assets/bundled/prefabs/autospawn/resource/ores_snow/metal-ore.prefab");
-            idToString.Add(2861041275, "assets/bundled/prefabs/autospawn/resource/ores_snow/stone-ore.prefab");
-            idToString.Add(1502989249, "assets/bundled/prefabs/autospawn/resource/ores_snow/sulfur-ore.prefab");
+
+            //ORES
+            idToString.Add(736323343, "Metal Ore"); //assets/bundled/prefabs/autospawn/resource/ores/metal-ore.prefab
+            idToString.Add(916501233, "Stone Ore"); //assets/bundled/prefabs/autospawn/resource/ores/stone-ore.prefab
+            idToString.Add(1351790091, "Sulfur Ore"); //assets/bundled/prefabs/autospawn/resource/ores/stone-ore.prefab
+            idToString.Add(2680863385, "Metal Ore"); //assets/bundled/prefabs/autospawn/resource/ores_snow/metal-ore.prefab
+            idToString.Add(2861041275, "Stone Ore"); //assets/bundled/prefabs/autospawn/resource/ores_snow/stone-ore.prefab
+            idToString.Add(1502989249, "Sulfur Ore"); //assets/bundled/prefabs/autospawn/resource/ores_snow/sulfur-ore.prefab
+
             idToString.Add(2383893405, "assets/bundled/prefabs/autospawn/resource/v2_arctic_forest/deadtree-3.prefab");
             idToString.Add(1420898968, "assets/bundled/prefabs/autospawn/resource/v2_arctic_forest/douglas-fir-1.prefab");
             idToString.Add(3163709303, "assets/bundled/prefabs/autospawn/resource/v2_arctic_forest/douglas-fir-2.prefab");
@@ -904,6 +922,8 @@ namespace Rust_Interceptor {
             idToString.Add(1290381754, "assets/bundled/prefabs/fx/weapons/survey_charge/survey_charge_stick.prefab");
             idToString.Add(3046952404, "assets/bundled/prefabs/napalm.prefab");
             idToString.Add(86971321, "assets/bundled/prefabs/oilfireballsmall.prefab");
+
+            //LOOT
             idToString.Add(3575688258, "assets/bundled/prefabs/radtown/crate_mine.prefab");
             idToString.Add(311943278, "assets/bundled/prefabs/radtown/crate_normal.prefab");
             idToString.Add(184186459, "assets/bundled/prefabs/radtown/crate_normal_2.prefab");
@@ -925,9 +945,12 @@ namespace Rust_Interceptor {
             idToString.Add(4041321320, "assets/bundled/prefabs/radtown/loot_component_test.prefab");
             idToString.Add(1577697392, "assets/bundled/prefabs/radtown/loot_trash.prefab");
             idToString.Add(1742295134, "assets/bundled/prefabs/radtown/oil_barrel.prefab");
-            idToString.Add(3288163689, "assets/bundled/prefabs/radtown/ore_metal.prefab");
-            idToString.Add(2523918923, "assets/bundled/prefabs/radtown/ore_stone.prefab");
-            idToString.Add(340725435, "assets/bundled/prefabs/radtown/ore_sulfur.prefab");
+
+            //ORE
+            idToString.Add(3288163689, "Metal Ore"); //assets/bundled/prefabs/radtown/ore_metal.prefab
+            idToString.Add(2523918923, "Stone Ore"); //assets/bundled/prefabs/radtown/ore_stone.prefab
+            idToString.Add(340725435, "Sulfur Ore"); //assets/bundled/prefabs/radtown/ore_sulfur.prefab
+
             idToString.Add(2324482916, "assets/bundled/prefabs/static/campfire_static.prefab");
             idToString.Add(2319933772, "assets/bundled/prefabs/static/door.hinged.garage_a.prefab");
             idToString.Add(2620538008, "assets/bundled/prefabs/static/door.hinged.industrial_a_a.prefab");
@@ -4081,11 +4104,11 @@ namespace Rust_Interceptor {
             idToString.Add(1443905624, "assets/prefabs/deployable/barricades/sound/barricade-stone-deploy.asset");
             idToString.Add(3520307362, "assets/prefabs/deployable/barricades/sound/barricade-wood-deploy.asset");
             idToString.Add(2397895242, "assets/prefabs/deployable/bear trap/beartrap.item.prefab");
-            idToString.Add(1987607833, "assets/prefabs/deployable/bear trap/beartrap.prefab");
+            idToString.Add(1987607833, "assets/prefabs/deployable/bear trap/beartrap.prefab"); //BEARTRAP
             idToString.Add(1268837471, "assets/prefabs/deployable/bear trap/effects/bear-trap-deploy.prefab");
             idToString.Add(740016136, "assets/prefabs/deployable/bear trap/sound/bear-trap-deploy.asset");
             idToString.Add(3825334178, "assets/prefabs/deployable/bed/bed.item.prefab");
-            idToString.Add(38060478, "assets/prefabs/deployable/bed/bed_deployed.prefab");
+            idToString.Add(38060478, "assets/prefabs/deployable/bed/bed_deployed.prefab"); //BED
             idToString.Add(1376666914, "assets/prefabs/deployable/bed/effects/bed-deploy.prefab");
             idToString.Add(1250632485, "assets/prefabs/deployable/bed/sound/bed-deploy.asset");
             idToString.Add(1984418110, "assets/prefabs/deployable/campfire/campfire.item.prefab");
@@ -4118,17 +4141,17 @@ namespace Rust_Interceptor {
             idToString.Add(339874972, "assets/prefabs/deployable/floor spikes/sound/floor-spikes-deploy.asset");
             idToString.Add(2256950472, "assets/prefabs/deployable/floor spikes/spikes.floor.item.prefab");
             idToString.Add(787745755, "assets/prefabs/deployable/floor spikes/spikes.floor.prefab");
-            idToString.Add(3683084011, "assets/prefabs/deployable/fridge/fridge.deployed.prefab");
+            idToString.Add(3683084011, "assets/prefabs/deployable/fridge/fridge.deployed.prefab"); //FRIDGE
             idToString.Add(3931601190, "assets/prefabs/deployable/fridge/fridge.deployed.skinnable.asset");
             idToString.Add(3080249982, "assets/prefabs/deployable/fridge/fridge.item.prefab");
             idToString.Add(3691636171, "assets/prefabs/deployable/furnace.large/effects/furnace-large-deploy.prefab");
             idToString.Add(3890759786, "assets/prefabs/deployable/furnace.large/furnace.large.item.prefab");
-            idToString.Add(1995234041, "assets/prefabs/deployable/furnace.large/furnace.large.prefab");
+            idToString.Add(1995234041, "assets/prefabs/deployable/furnace.large/furnace.large.prefab"); //LARGE FURNACE
             idToString.Add(519017628, "assets/prefabs/deployable/furnace.large/sound/furnace-large-deploy.asset");
             idToString.Add(600929314, "assets/prefabs/deployable/furnace.large/sound/large-furnace-burning.asset");
             idToString.Add(2500098000, "assets/prefabs/deployable/furnace/effects/furnace-deploy.prefab");
             idToString.Add(728692304, "assets/prefabs/deployable/furnace/furnace.item.prefab");
-            idToString.Add(1425970515, "assets/prefabs/deployable/furnace/furnace.prefab");
+            idToString.Add(1425970515, "assets/prefabs/deployable/furnace/furnace.prefab"); //FURNACE
             idToString.Add(2913578871, "assets/prefabs/deployable/furnace/sound/furnace-deploy.asset");
             idToString.Add(4172625299, "assets/prefabs/deployable/jack o lantern/jackolantern.angry.item.prefab");
             idToString.Add(952670256, "assets/prefabs/deployable/jack o lantern/jackolantern.angry.prefab");
@@ -4139,7 +4162,7 @@ namespace Rust_Interceptor {
             idToString.Add(1942823067, "assets/prefabs/deployable/jack o lantern/jackolantern.happy.sitem.asset");
             idToString.Add(3668090318, "assets/prefabs/deployable/jack o lantern/jackolantern.happy.worldmodel.prefab");
             idToString.Add(1184213278, "assets/prefabs/deployable/landmine/landmine.item.prefab");
-            idToString.Add(3916093893, "assets/prefabs/deployable/landmine/landmine.prefab");
+            idToString.Add(3916093893, "assets/prefabs/deployable/landmine/landmine.prefab"); //LANDMINE
             idToString.Add(3681938756, "assets/prefabs/deployable/landmine/sounds/landmine-explosion.asset");
             idToString.Add(4213440743, "assets/prefabs/deployable/landmine/sounds/landmine-trigger.asset");
             idToString.Add(2992460588, "assets/prefabs/deployable/lantern/effects/lantern-deploy.prefab");
@@ -4190,7 +4213,7 @@ namespace Rust_Interceptor {
             idToString.Add(3380688382, "assets/prefabs/deployable/quarry/fuelstorage.prefab");
             idToString.Add(1993726732, "assets/prefabs/deployable/quarry/hopperoutput.prefab");
             idToString.Add(3792915194, "assets/prefabs/deployable/quarry/mining.quarry.item.prefab");
-            idToString.Add(2783057368, "assets/prefabs/deployable/quarry/mining_quarry.prefab");
+            idToString.Add(2783057368, "assets/prefabs/deployable/quarry/mining_quarry.prefab"); //QUARRY
             idToString.Add(3217174446, "assets/prefabs/deployable/quarry/sound/mining-quarry-deploy.asset");
             idToString.Add(1173452825, "assets/prefabs/deployable/reactive target/effects/bullseye.asset");
             idToString.Add(2445396347, "assets/prefabs/deployable/reactive target/effects/bullseye.prefab");
@@ -4297,13 +4320,13 @@ namespace Rust_Interceptor {
             idToString.Add(1278792212, "assets/prefabs/deployable/signs/sound/wood-sign-deploy.asset");
             idToString.Add(1338645963, "assets/prefabs/deployable/sleeping bag/effects/sleeping-bag-deploy.prefab");
             idToString.Add(3680709172, "assets/prefabs/deployable/sleeping bag/sleepingbag.item.prefab");
-            idToString.Add(2268399418, "assets/prefabs/deployable/sleeping bag/sleepingbag_leather_deployed.prefab");
+            idToString.Add(2268399418, "assets/prefabs/deployable/sleeping bag/sleepingbag_leather_deployed.prefab"); //SLEEPING BAG
             idToString.Add(1520943543, "assets/prefabs/deployable/sleeping bag/sleepingbag_leather_deployed.skinnable.asset");
             idToString.Add(416031074, "assets/prefabs/deployable/sleeping bag/sleepingbag_leather_occupied.prefab");
             idToString.Add(2652980502, "assets/prefabs/deployable/sleeping bag/sound/sleeping-bag-deploy.asset");
             idToString.Add(382452779, "assets/prefabs/deployable/small stash/effects/small-stash-deploy.prefab");
             idToString.Add(1549745401, "assets/prefabs/deployable/small stash/small_stash.item.prefab");
-            idToString.Add(3577840533, "assets/prefabs/deployable/small stash/small_stash_deployed.prefab");
+            idToString.Add(3577840533, "assets/prefabs/deployable/small stash/small_stash_deployed.prefab"); //SMALL STASH
             idToString.Add(3863251260, "assets/prefabs/deployable/small stash/sound/small-stash-deploy.asset");
             idToString.Add(3063766758, "assets/prefabs/deployable/survivalfishtrap/effects/fish_caught.prefab");
             idToString.Add(2794239081, "assets/prefabs/deployable/survivalfishtrap/effects/fish-trap-deploy.prefab");
@@ -4316,7 +4339,7 @@ namespace Rust_Interceptor {
             idToString.Add(2868769641, "assets/prefabs/deployable/table/table.deployed.prefab");
             idToString.Add(2242124392, "assets/prefabs/deployable/table/table.deployed.skinnable.asset");
             idToString.Add(3100990972, "assets/prefabs/deployable/table/table.item.prefab");
-            idToString.Add(1327435419, "assets/prefabs/deployable/tool cupboard/cupboard.tool.deployed.prefab");
+            idToString.Add(1327435419, "assets/prefabs/deployable/tool cupboard/cupboard.tool.deployed.prefab"); //TOOLCUPBOARD
             idToString.Add(119005742, "assets/prefabs/deployable/tool cupboard/cupboard.tool.item.prefab");
             idToString.Add(1158963021, "assets/prefabs/deployable/tool cupboard/effects/tool-cupboard-deploy.prefab");
             idToString.Add(3726996506, "assets/prefabs/deployable/tool cupboard/sound/tool-cupboard-deploy.asset");
@@ -4358,11 +4381,11 @@ namespace Rust_Interceptor {
             idToString.Add(1325803011, "assets/prefabs/deployable/windmill/generator.wind.scrap.prefab");
             idToString.Add(1418022661, "assets/prefabs/deployable/windmill/windmill.prefab");
             idToString.Add(2429635511, "assets/prefabs/deployable/wooden loot crates/wooden_crate_1.prefab");
-            idToString.Add(4172445846, "assets/prefabs/deployable/wooden loot crates/wooden_crate_2.prefab");
+            idToString.Add(4172445846, "assets/prefabs/deployable/wooden loot crates/wooden_crate_2.prefab"); //WOOD LOOT
             idToString.Add(505112983, "assets/prefabs/deployable/woodenbox/box_wooden.item.prefab");
             idToString.Add(2591988507, "assets/prefabs/deployable/woodenbox/effects/wooden-box-deploy.prefab");
             idToString.Add(358501510, "assets/prefabs/deployable/woodenbox/sound/wooden-box-deploy.asset");
-            idToString.Add(2014947887, "assets/prefabs/deployable/woodenbox/woodbox_deployed.prefab");
+            idToString.Add(2014947887, "assets/prefabs/deployable/woodenbox/woodbox_deployed.prefab"); //WOOD BOX
             idToString.Add(1847763554, "assets/prefabs/deployable/woodenbox/woodbox_deployed.skinnable.asset");
             idToString.Add(3933975510, "assets/prefabs/effects/auroras/auroras_skychild.prefab");
             idToString.Add(4077658250, "assets/prefabs/effects/foliage/pfx_leaves.prefab");
@@ -4597,7 +4620,7 @@ namespace Rust_Interceptor {
             idToString.Add(1909019481, "assets/prefabs/misc/xmas/loottables/world/worldgiftbox.asset");
             idToString.Add(2164333199, "assets/prefabs/misc/xmas/pookie/pookie.item.prefab");
             idToString.Add(157821515, "assets/prefabs/misc/xmas/pookie/pookie.worldmodel.prefab");
-            idToString.Add(4092503595, "assets/prefabs/misc/xmas/pookie/pookie_deployed.prefab");
+            idToString.Add(4092503595, "assets/prefabs/misc/xmas/pookie/pookie_deployed.prefab"); //POOKIE
             idToString.Add(2465789230, "assets/prefabs/misc/xmas/presents/coal.item.prefab");
             idToString.Add(2910005916, "assets/prefabs/misc/xmas/presents/effects/unwrap.prefab");
             idToString.Add(506792469, "assets/prefabs/misc/xmas/presents/effects/wrap.prefab");
@@ -4622,7 +4645,7 @@ namespace Rust_Interceptor {
             idToString.Add(1201201894, "assets/prefabs/misc/xmas/wearable/santahat/santahat_worldmodel.prefab");
             idToString.Add(3572763876, "assets/prefabs/misc/xmas/xmasrefill.prefab");
             idToString.Add(1814260102, "assets/prefabs/npc/autoturret/autoturret.item.prefab");
-            idToString.Add(3604128162, "assets/prefabs/npc/autoturret/autoturret_deployed.prefab");
+            idToString.Add(3604128162, "assets/prefabs/npc/autoturret/autoturret_deployed.prefab"); //AUTOTURRET
             idToString.Add(3251503474, "assets/prefabs/npc/autoturret/effects/offline.prefab");
             idToString.Add(3399328668, "assets/prefabs/npc/autoturret/effects/online.prefab");
             idToString.Add(2055203984, "assets/prefabs/npc/autoturret/effects/targetacquired.prefab");
@@ -4886,7 +4909,7 @@ namespace Rust_Interceptor {
             idToString.Add(2207577996, "assets/prefabs/npc/wolf/wolf_corpse.prefab");
             idToString.Add(2411195865, "assets/prefabs/npc/wolf/wolf_ragdoll.prefab");
             idToString.Add(1535793131, "assets/prefabs/npc/wolf/wolf_skin.prefab");
-            idToString.Add(2617619701, "assets/prefabs/plants/corn/corn.entity.prefab");
+            idToString.Add(2617619701, "assets/prefabs/plants/corn/corn.entity.prefab"); //CORN
             idToString.Add(1601745221, "assets/prefabs/plants/corn/corn.item.prefab");
             idToString.Add(4108255048, "assets/prefabs/plants/corn/corn.plantproperty.asset");
             idToString.Add(489317612, "assets/prefabs/plants/corn/corn.skin.0.seed.prefab");
@@ -4897,7 +4920,7 @@ namespace Rust_Interceptor {
             idToString.Add(919822229, "assets/prefabs/plants/corn/corn.skin.5.dying.prefab");
             idToString.Add(302476707, "assets/prefabs/plants/corn/corn_clone.item.prefab");
             idToString.Add(3871487533, "assets/prefabs/plants/corn/corn_seed.item.prefab");
-            idToString.Add(1512015861, "assets/prefabs/plants/hemp/hemp.entity.prefab");
+            idToString.Add(1512015861, "assets/prefabs/plants/hemp/hemp.entity.prefab"); //HEMP
             idToString.Add(3205403208, "assets/prefabs/plants/hemp/hemp.plantproperty.asset");
             idToString.Add(1430024684, "assets/prefabs/plants/hemp/hemp.skin.0.seed.prefab");
             idToString.Add(1436676663, "assets/prefabs/plants/hemp/hemp.skin.1.seedling.prefab");
@@ -4911,7 +4934,7 @@ namespace Rust_Interceptor {
             idToString.Add(2337064348, "assets/prefabs/plants/plantharvest.sound.asset");
             idToString.Add(2115530356, "assets/prefabs/plants/plantseed.effect.prefab");
             idToString.Add(2645147652, "assets/prefabs/plants/plantseed.sound.asset");
-            idToString.Add(2270330823, "assets/prefabs/plants/pumpkin/pumpkin.entity.prefab");
+            idToString.Add(2270330823, "assets/prefabs/plants/pumpkin/pumpkin.entity.prefab"); //PUMPKIN
             idToString.Add(113117335, "assets/prefabs/plants/pumpkin/pumpkin.item.prefab");
             idToString.Add(1187570842, "assets/prefabs/plants/pumpkin/pumpkin.plantproperty.asset");
             idToString.Add(2057669978, "assets/prefabs/plants/pumpkin/pumpkin.skin.0.seed.prefab");
@@ -8578,7 +8601,327 @@ namespace Rust_Interceptor {
             idToString.Add(1525190054, "worldui");
             idToString.Add(551118194, "zero friction");
 
-        }
 
+            itemIDToString.Add(2115555558, "Handmade Shell");
+            itemIDToString.Add(-533875561, "Pistol Bullet");
+            itemIDToString.Add(1621541165, "Incendiary Pistol Bullet");
+            itemIDToString.Add(-422893115, "HV Pistol Ammo");
+            itemIDToString.Add(815896488, "5.56 Rifle Ammo");
+            itemIDToString.Add(805088543, "Explosive 5.56 Rifle Ammo");
+            itemIDToString.Add(1152393492, "HV 5.56 Rifle Ammo");
+            itemIDToString.Add(449771810, "Incendiary 5.56 Rifle Ammo");
+            itemIDToString.Add(1578894260, "Rocket");
+            itemIDToString.Add(1436532208, "Incendiary Rocket");
+            itemIDToString.Add(542276424, "High Velocity Rocket");
+            itemIDToString.Add(1594947829, "Smoke Rocket WIP!!!!");
+            itemIDToString.Add(-1035059994, "12 Gauge Buckshot");
+            itemIDToString.Add(1819281075, "12 Gauge Slug");
+            itemIDToString.Add(1685058759, "Anti-Radiation Pills");
+            itemIDToString.Add(93029210, "Apple");
+            itemIDToString.Add(-1565095136, "Rotten Apple");
+            itemIDToString.Add(-1280058093, "High Velocity Arrow");
+            itemIDToString.Add(-420273765, "Wooden Arrow");
+            itemIDToString.Add(-148163128, "Hide Boots");
+            itemIDToString.Add(936777834, "Hide Halterneck");
+            itemIDToString.Add(-135651869, "Hide Pants");
+            itemIDToString.Add(102672084, "Hide Poncho");
+            itemIDToString.Add(-132588262, "Hide Skirt");
+            itemIDToString.Add(-1666761111, "Hide Vest");
+            itemIDToString.Add(563023711, "Auto Turret");
+            itemIDToString.Add(790921853, "Salvaged Axe");
+            itemIDToString.Add(-337261910, "Bandage");
+            itemIDToString.Add(498312426, "Concrete Barricade");
+            itemIDToString.Add(504904386, "Metal Barricade");
+            itemIDToString.Add(-1221200300, "Sandbag Barricade");
+            itemIDToString.Add(510887968, "Stone Barricade");
+            itemIDToString.Add(-814689390, "Wooden Barricade");
+            itemIDToString.Add(1024486167, "Barbed Wooden Barricade");
+            itemIDToString.Add(2021568998, "Battery - Small");
+            itemIDToString.Add(1325935999, "Bear Meat");
+            itemIDToString.Add(-2066726403, "Burnt Bear Meat");
+            itemIDToString.Add(-2043730634, "Bear Meat Cooked");
+            itemIDToString.Add(97409, "Bed");
+            itemIDToString.Add(1611480185, "Black Raspberries");
+            itemIDToString.Add(-1386464949, "Bleach");
+            itemIDToString.Add(93832698, "Blood");
+            itemIDToString.Add(-1063412582, "Blueberries");
+            itemIDToString.Add(-1887162396, "Blueprint");
+            itemIDToString.Add(569119686, "Bone Armor");
+            itemIDToString.Add(919780768, "Bone Club");
+            itemIDToString.Add(-365801095, "Bone Fragments");
+            itemIDToString.Add(68998734, "Bota Bag");
+            itemIDToString.Add(-853695669, "Hunting Bow");
+            itemIDToString.Add(-1026117678, "Repair Bench");
+            itemIDToString.Add(-770311783, "Wood Storage Box");
+            itemIDToString.Add(271534758, "Large Wood Box");
+            itemIDToString.Add(1260209393, "Bucket Helmet");
+            itemIDToString.Add(-1192532973, "Water Bucket");
+            itemIDToString.Add(-307490664, "Building Plan");
+            itemIDToString.Add(115739308, "Leather Gloves");
+            itemIDToString.Add(-1035315940, "Burlap Headwrap");
+            itemIDToString.Add(707427396, "Burlap Shirt");
+            itemIDToString.Add(707432758, "Burlap Shoes");
+            itemIDToString.Add(1767561705, "Burlap Trousers");
+            itemIDToString.Add(-2079677721, "Cactus Flesh");
+            itemIDToString.Add(-139769801, "Camp Fire");
+            itemIDToString.Add(-1043746011, "Can of Beans");
+            itemIDToString.Add(2080339268, "Empty Can Of Beans");
+            itemIDToString.Add(-171664558, "Can of Tuna");
+            itemIDToString.Add(1050986417, "Empty Tuna Can");
+            itemIDToString.Add(523409530, "Candy Cane");
+            itemIDToString.Add(1300054961, "CCTV Camera");
+            itemIDToString.Add(-2095387015, "Ceiling Light");
+            itemIDToString.Add(94623429, "Chair");
+            itemIDToString.Add(1436001773, "Charcoal");
+            itemIDToString.Add(1711323399, "Burned Chicken");
+            itemIDToString.Add(1734319168, "Cooked Chicken.");
+            itemIDToString.Add(-1658459025, "Raw Chicken Breast");
+            itemIDToString.Add(-726947205, "Spoiled Chicken");
+            itemIDToString.Add(-341443994, "Chocolate Bar");
+            itemIDToString.Add(2045107609, "Corn Clone");
+            itemIDToString.Add(2045246801, "Hemp Clone");
+            itemIDToString.Add(509654999, "Pumpkin Plant Clone");
+            itemIDToString.Add(94756378, "Cloth");
+            itemIDToString.Add(3059095, "Coal");
+            itemIDToString.Add(-2128719593, "Coffee Can Helmet");
+            itemIDToString.Add(3059624, "Corn");
+            itemIDToString.Add(2123300234, "Crossbow");
+            itemIDToString.Add(1983936587, "Crude Oil");
+            itemIDToString.Add(1257201758, "Tool Cupboard");
+            itemIDToString.Add(-1178289187, "Bone Helmet");
+            itemIDToString.Add(-778796102, "Door Closer");
+            itemIDToString.Add(-1598790097, "Sheet Metal Double Door");
+            itemIDToString.Add(-933236257, "Armored Double Door");
+            itemIDToString.Add(-1575287163, "Wood Double Door");
+            itemIDToString.Add(-2104481870, "Sheet Metal Door");
+            itemIDToString.Add(-1571725662, "Armored Door");
+            itemIDToString.Add(1456441506, "Wooden Door");
+            itemIDToString.Add(1200628767, "Door Key");
+            itemIDToString.Add(1891056868, "Duct Tape");
+            itemIDToString.Add(1295154089, "Satchel Charge");
+            itemIDToString.Add(498591726, "Timed Explosive Charge");
+            itemIDToString.Add(1755466030, "Explosives");
+            itemIDToString.Add(-1034048911, "Animal Fat");
+            itemIDToString.Add(-2078972355, "Cooked Fish");
+            itemIDToString.Add(88869913, "Minnows");
+            itemIDToString.Add(-533484654, "Raw Fish");
+            itemIDToString.Add(865679437, "Small Trout");
+            itemIDToString.Add(1369769822, "Survival Fish Trap");
+            itemIDToString.Add(1045869440, "Flame Thrower");
+            itemIDToString.Add(1985408483, "Flame Turret");
+            itemIDToString.Add(97513422, "Flare");
+            itemIDToString.Add(-1722829188, "A floor grill");
+            itemIDToString.Add(1849912854, "Ladder Hatch");
+            itemIDToString.Add(-1266285051, "Fridge");
+            itemIDToString.Add(-217113639, "Acoustic Guitar");
+            itemIDToString.Add(-505639592, "Furnace");
+            itemIDToString.Add(1598149413, "Large Furnace");
+            itemIDToString.Add(-1779401418, "High External Stone Gate");
+            itemIDToString.Add(-57285700, "High External Wooden Gate");
+            itemIDToString.Add(98228420, "Gears");
+            itemIDToString.Add(277631078, "Wind Turbine");
+            itemIDToString.Add(3175989, "Glue");
+            itemIDToString.Add(718197703, "Granola Bar");
+            itemIDToString.Add(384204160, "Beancan Grenade");
+            itemIDToString.Add(-1308622549, "F1 Grenade");
+            itemIDToString.Add(-1580059655, "Gun Powder");
+            itemIDToString.Add(-1224598842, "Hammer");
+            itemIDToString.Add(-1976561211, "Salvaged Hammer");
+            itemIDToString.Add(-1406876421, "Beenie Hat");
+            itemIDToString.Add(-1397343301, "Boonie Hat");
+            itemIDToString.Add(-1381682752, "Candle Hat");
+            itemIDToString.Add(696727039, "Baseball Cap");
+            itemIDToString.Add(-450738836, "Miners Hat");
+            itemIDToString.Add(124310981, "Wolf Headdress");
+            itemIDToString.Add(698310895, "Hatchet");
+            itemIDToString.Add(-1078788046, "Hazmat Boots");
+            itemIDToString.Add(1057685737, "Hazmat Gloves");
+            itemIDToString.Add(1079752220, "Hazmat Helmet");
+            itemIDToString.Add(1133046397, "Hazmat Jacket");
+            itemIDToString.Add(-1066276787, "Hazmat Pants");
+            itemIDToString.Add(523855532, "Hazmat Suit");
+            itemIDToString.Add(1351172108, "Heavy Plate Helmet");
+            itemIDToString.Add(1404466285, "Heavy Plate Jacket");
+            itemIDToString.Add(-1334615971, "Heavy Plate Pants");
+            itemIDToString.Add(-1211618504, "Hoodie");
+            itemIDToString.Add(2133577942, "High Quality Metal Ore");
+            itemIDToString.Add(-1014825244, "Burned Human Meat");
+            itemIDToString.Add(-991829475, "Cooked Human Meat");
+            itemIDToString.Add(-642008142, "Raw Human Meat");
+            itemIDToString.Add(661790782, "Spoiled Human Meat");
+            itemIDToString.Add(-1440143841, "Salvaged Icepick");
+            itemIDToString.Add(-1167640370, "Jacket");
+            itemIDToString.Add(-1616887133, "Snow Jacket - Red");
+            itemIDToString.Add(-1284735799, "Jack O Lantern Angry");
+            itemIDToString.Add(-1278649848, "Jack O Lantern Happy");
+            itemIDToString.Add(776005741, "Bone Knife");
+            itemIDToString.Add(108061910, "Wooden Ladder");
+            itemIDToString.Add(-51678842, "Lantern");
+            itemIDToString.Add(-789202811, "Large Medkit");
+            itemIDToString.Add(50834473, "Leather");
+            itemIDToString.Add(193190034, "M249");
+            itemIDToString.Add(-975723312, "Code Lock");
+            itemIDToString.Add(1908195100, "Lock");
+            itemIDToString.Add(146685185, "Longsword");
+            itemIDToString.Add(28178745, "Low Grade Fuel");
+            itemIDToString.Add(3343606, "Mace");
+            itemIDToString.Add(825308669, "Machete");
+            itemIDToString.Add(107868, "Paper Map");
+            itemIDToString.Add(997973965, "Improvised Balaclava");
+            itemIDToString.Add(-46188931, "Bandana Mask");
+            itemIDToString.Add(-253819519, "Pork");
+            itemIDToString.Add(968732481, "Burned Pork");
+            itemIDToString.Add(991728250, "Cooked Pork");
+            itemIDToString.Add(-46848560, "Metal Facemask");
+            itemIDToString.Add(688032252, "Metal Fragments");
+            itemIDToString.Add(-1059362949, "Metal Ore");
+            itemIDToString.Add(1265861812, "Metal Chest Plate");
+            itemIDToString.Add(374890416, "High Quality Metal");
+            itemIDToString.Add(1567404401, "Metal Blade");
+            itemIDToString.Add(-1057402571, "Metal Pipe");
+            itemIDToString.Add(1835797460, "Metal Spring");
+            itemIDToString.Add(-758925787, "Pump Jack");
+            itemIDToString.Add(-1411620422, "Mining Quarry");
+            itemIDToString.Add(843418712, "Mushroom");
+            itemIDToString.Add(3387378, "Note");
+            itemIDToString.Add(106433500, "Pants");
+            itemIDToString.Add(-459156023, "Shorts");
+            itemIDToString.Add(106434956, "Paper");
+            itemIDToString.Add(-578028723, "Pick Axe");
+            itemIDToString.Add(-1379225193, "Eoka Pistol");
+            itemIDToString.Add(371156815, "M92 Pistol");
+            itemIDToString.Add(2033918259, "Python Revolver");
+            itemIDToString.Add(-930579334, "Revolver");
+            itemIDToString.Add(548699316, "Semi-Automatic Pistol");
+            itemIDToString.Add(142147109, "Large Planter Box");
+            itemIDToString.Add(148953073, "Small Planter Box");
+            itemIDToString.Add(640562379, "Pookie Bear");
+            itemIDToString.Add(1974032895, "Empty Propane Tank");
+            itemIDToString.Add(-225085592, "Pumpkin");
+            itemIDToString.Add(1987447227, "Research Table");
+            itemIDToString.Add(540154065, "Research Paper");
+            itemIDToString.Add(-1461508848, "Assault Rifle");
+            itemIDToString.Add(-55660037, "Bolt Action Rifle");
+            itemIDToString.Add(-1716193401, "LR-300 Assault Rifle");
+            itemIDToString.Add(-1745053053, "Semi-Automatic Rifle");
+            itemIDToString.Add(1939428458, "Rifle Body");
+            itemIDToString.Add(340009023, "Riot Helmet");
+            itemIDToString.Add(-288010497, "Road Sign Jacket");
+            itemIDToString.Add(-1595790889, "Road Sign Kilt");
+            itemIDToString.Add(-847065290, "Road Signs");
+            itemIDToString.Add(3506021, "Rock");
+            itemIDToString.Add(649603450, "Rocket Launcher");
+            itemIDToString.Add(3506418, "Rope");
+            itemIDToString.Add(113284, "Rug");
+            itemIDToString.Add(569935070, "Rug Bear Skin");
+            itemIDToString.Add(-1775234707, "Salvaged Cleaver");
+            itemIDToString.Add(-388967316, "Salvaged Sword");
+            itemIDToString.Add(2007564590, "Santa Hat");
+            itemIDToString.Add(583366917, "Corn Seed");
+            itemIDToString.Add(583506109, "Hemp Seed");
+            itemIDToString.Add(466113771, "Pumpkin Seed");
+            itemIDToString.Add(1223860752, "Semi Automatic Body");
+            itemIDToString.Add(-419069863, "Sewing Kit");
+            itemIDToString.Add(-1617374968, "Sheet Metal");
+            itemIDToString.Add(2057749608, "Salvaged Shelves");
+            itemIDToString.Add(24576628, "Shirt");
+            itemIDToString.Add(-1659202509, "Tank Top");
+            itemIDToString.Add(2107229499, "Boots");
+            itemIDToString.Add(191795897, "Double Barrel Shotgun");
+            itemIDToString.Add(-1009492144, "Pump Shotgun");
+            itemIDToString.Add(2077983581, "Waterpipe Shotgun");
+            itemIDToString.Add(-529054135, "Metal horizontal embrasure");
+            itemIDToString.Add(-529054134, "Metal Vertical embrasure");
+            itemIDToString.Add(486166145, "Wood Shutters");
+            itemIDToString.Add(1498516223, "Two Sided Hanging Sign");
+            itemIDToString.Add(1628490888, "Large Banner Hanging");
+            itemIDToString.Add(-632459882, "Two Sided Ornate Hanging Sign");
+            itemIDToString.Add(-626812403, "Landscape Picture Frame");
+            itemIDToString.Add(385802761, "Portrait Picture Frame");
+            itemIDToString.Add(2117976603, "Tall Picture Frame");
+            itemIDToString.Add(1338515426, "XL Picture Frame");
+            itemIDToString.Add(-1455694274, "XXL Picture Frame");
+            itemIDToString.Add(1579245182, "Large Banner on pole");
+            itemIDToString.Add(-587434450, "Double Sign Post");
+            itemIDToString.Add(-163742043, "Single Sign Post");
+            itemIDToString.Add(-1224714193, "One Sided Town Sign Post");
+            itemIDToString.Add(644359987, "Two Sided Town Sign Post");
+            itemIDToString.Add(-1962514734, "Huge Wooden Sign");
+            itemIDToString.Add(-705305612, "Large Wooden Sign");
+            itemIDToString.Add(-357728804, "Wooden Sign");
+            itemIDToString.Add(-698499648, "Small Wooden Sign");
+            itemIDToString.Add(960793436, "Human Skull");
+            itemIDToString.Add(1001265731, "Wolf Skull");
+            itemIDToString.Add(1253290621, "Sleeping Bag");
+            itemIDToString.Add(470729623, "Small Oil Refinery");
+            itemIDToString.Add(927253046, "Small Water Bottle");
+            itemIDToString.Add(109552593, "Custom SMG");
+            itemIDToString.Add(-2094080303, "MP5A4");
+            itemIDToString.Add(456448245, "Thompson");
+            itemIDToString.Add(-2092529553, "SMG Body");
+            itemIDToString.Add(-2118132208, "Stone Spear");
+            itemIDToString.Add(-1127699509, "Wooden Spear");
+            itemIDToString.Add(-685265909, "Wooden Floor Spikes");
+            itemIDToString.Add(1051155022, "Small Stash");
+            itemIDToString.Add(-892259869, "Sticks");
+            itemIDToString.Add(-1623330855, "SUPER Stocking");
+            itemIDToString.Add(-1616524891, "Small Stocking");
+            itemIDToString.Add(789892804, "Stone Pick Axe");
+            itemIDToString.Add(-1289478934, "Stone Hatchet");
+            itemIDToString.Add(-892070738, "Stones");
+            itemIDToString.Add(-891243783, "Sulfur");
+            itemIDToString.Add(889398893, "Sulfur Ore");
+            itemIDToString.Add(-1625468793, "Supply Signal");
+            itemIDToString.Add(1293049486, "Survey Charge");
+            itemIDToString.Add(586484018, "Medical Syringe");
+            itemIDToString.Add(110115790, "Table");
+            itemIDToString.Add(2069925558, "Reactive Target");
+            itemIDToString.Add(1490499512, "Targeting Computer");
+            itemIDToString.Add(3552619, "Tarp");
+            itemIDToString.Add(1471284746, "Tech Trash");
+            itemIDToString.Add(-1342405573, "Camera");
+            itemIDToString.Add(110547964, "Torch");
+            itemIDToString.Add(1046072789, "Snap Trap");
+            itemIDToString.Add(255101535, "Land Mine");
+            itemIDToString.Add(-864578046, "T-Shirt");
+            itemIDToString.Add(1660607208, "Longsleeve T-Shirt");
+            itemIDToString.Add(260214178, "Tuna Can Lamp");
+            itemIDToString.Add(-1847536522, "Vending Machine");
+            itemIDToString.Add(-1792066367, "High External Wooden Wall");
+            itemIDToString.Add(-496055048, "High External Stone Wall");
+            itemIDToString.Add(-427925529, "Prison Cell Wall");
+            itemIDToString.Add(562888306, "Prison Cell Gate");
+            itemIDToString.Add(-378017204, "Chainlink Fence");
+            itemIDToString.Add(995306285, "Chainlink Fence Gate");
+            itemIDToString.Add(1175970190, "Shop Front");
+            itemIDToString.Add(525244071, "Metal Shop Front");
+            itemIDToString.Add(-1021702157, "Metal Window Bars");
+            itemIDToString.Add(-402507101, "Reinforced Window Bars");
+            itemIDToString.Add(-1556671423, "Wooden Window Bars");
+            itemIDToString.Add(112903447, "Water");
+            itemIDToString.Add(-1628526499, "Water Barrel");
+            itemIDToString.Add(1817873886, "Large Water Catcher");
+            itemIDToString.Add(1824679850, "Small Water Catcher");
+            itemIDToString.Add(1840561315, "Water Purifier");
+            itemIDToString.Add(1916127949, "Salt Water");
+            itemIDToString.Add(547302405, "Water Jug");
+            itemIDToString.Add(1229879204, "Weapon Flashlight");
+            itemIDToString.Add(-465236267, "Holosight");
+            itemIDToString.Add(516382256, "Weapon Lasersight");
+            itemIDToString.Add(-1569356508, "Muzzle Boost");
+            itemIDToString.Add(-1569280852, "Muzzle Brake");
+            itemIDToString.Add(1213686767, "Silencer");
+            itemIDToString.Add(-141135377, "4x Zoom Scope");
+            itemIDToString.Add(-1714986849, "Burned Wolf Meat");
+            itemIDToString.Add(-1691991080, "Cooked Wolf Meat");
+            itemIDToString.Add(179448791, "Raw Wolf Meat");
+            itemIDToString.Add(431617507, "Spoiled Wolf Meat");
+            itemIDToString.Add(3655341, "Wood");
+            itemIDToString.Add(1554697726, "Wood Chestplate");
+            itemIDToString.Add(-1883959124, "Wood Armor Pants");
+            itemIDToString.Add(-1732316031, "Large Present");
+            itemIDToString.Add(-2130280721, "Medium Present");
+            itemIDToString.Add(-1725510067, "Small Present");
+        }
     }
 }

@@ -49,7 +49,7 @@ namespace Rust_Interceptor {
 		internal Action<Packet> packetHandlerCallback = null;
 		internal Action<string> commandCallback = null;
 
-		public RustInterceptor(string server = "127.0.0.1", int port = 28015, int listenPort = 5678) {
+		public RustInterceptor(string server = "127.0.0.1", int port = 28015, int listenPort = 2781) {
 			StringPool.Fill();
 			serverIP = server;
 			serverPort = port;
@@ -67,7 +67,11 @@ namespace Rust_Interceptor {
 			packetHandlerCallback = handler;
 		}
 
-		public static ulong serverGUID {
+        public void RegisterCommandCallback(Action<string> handler) {
+            commandCallback = handler;
+        }
+
+        public static ulong serverGUID {
 			get { return serverPacket.incomingGUID; }
 		}
 
@@ -146,7 +150,8 @@ namespace Rust_Interceptor {
 			thread.Start();
 			thread.Join();
 			Console.WriteLine("Server address copied to Clipboard (F1 -> Paste -> Enter)");
-			Console.WriteLine("Listening on {0}", listenPort);
+            Console.WriteLine("Connecting to {0}:{1}", serverIP, serverPort);
+            Console.WriteLine("Listening on 127.0.0.1:{0}", listenPort);
 			clientPeer = RakNetPeer.CreateServer("0.0.0.0", listenPort, 1);
 			var emptyPacket = false;
 			var hasClientPacket = false;
