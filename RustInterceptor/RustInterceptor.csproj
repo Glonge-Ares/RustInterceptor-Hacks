@@ -4,7 +4,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{C0EF0E2D-E949-4169-947C-C2E690C1A9F4}</ProjectGuid>
+    <ProjectGuid>{E625F16C-A4A3-4698-8A2C-30D2F6FF0EA0}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Rust_Interceptor</RootNamespace>
