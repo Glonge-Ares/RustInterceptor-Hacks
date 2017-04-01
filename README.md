@@ -31,6 +31,8 @@
 ### Dependencies:
 - RustIntercepter
 - SharpDX
+- SharpDX.Direct2D1
+- SharpDX.DXGI
 
 ### Disclaimer
 - **This is my very first C# prject!**
