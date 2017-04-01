@@ -30,7 +30,7 @@
 
 ### Dependencies:
 - RustIntercepter
-- SharpDX
+- [SharpDX](http://sharpdx.org/)
 - SharpDX.Direct2D1
 - SharpDX.DXGI
 
