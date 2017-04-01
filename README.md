@@ -94,8 +94,9 @@ Bitcoin QR:
 
 ### Disclaimer
 - **This is my very first C# prject!**
+- **There are many unfinished features**
+- **There are some memory leaks that may cause lag**
 - This product is meant for educational purposes only.
 - This is work in progress and subject to change.
 - Void where prohibited.
 - No other warranty expressed or implied.
-- Some things don't work..
